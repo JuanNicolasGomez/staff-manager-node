@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "juan",
+        "email": "juan@mail.com",
+        "socialSecurityNumbre": 123456,
+        "technologies":[{
+            "name":"nodejs",
+            "experience": 12
+        }]
+    }
+]
