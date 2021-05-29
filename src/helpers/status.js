@@ -1,5 +1,8 @@
 module.exports = {
     PENDING: 'Pending',
     HIRED: 'Hired',
-    DECLINED: 'Declined'
+    DECLINED: 'Declined',
+    COMPLETED: 'Completed',
+    ACTIVE: 'Active',
+    NULL: null
 }

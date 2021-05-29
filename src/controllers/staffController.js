@@ -27,6 +27,14 @@ class staffController {
             .then(staff => staff ? res.json(staff) : res.sendStatus(404))
             .catch(err => next(err));
     }
+
+    updateStaffStatus(req,res, next) {
+        const {id} = req.params;
+        const status = req.body.status;
+        staffService.changeStaffStatus(id, status)
+            .then(staff => staff ? res.json(staff) : res.sendStatus(404))
+            .catch(err => next(err));
+    }
     
 }
 

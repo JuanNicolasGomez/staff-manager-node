@@ -6,7 +6,8 @@ module.exports = {
     createStaff,
     deleteStaff,
     updateStaffById,
-    getAll
+    getAll,
+    changeStaffStatus
 };
 
 async function getAll() {
@@ -42,6 +43,33 @@ async function updateStaffById(id, newStaff) {
             staff[i] = newStaff;
             updatedStaff = newStaff;
         }
+    }
+
+    return updatedStaff;
+}
+
+async function changeStaffStatus(id, newStatus) {
+    const updatedStaff = staff.find(s => s.id === parseInt(id));
+    if (newStatus === status.HIRED){
+        updatedStaff.hiringStatus = status.HIRED;
+        updatedStaff.recruitingStatus = status.COMPLETED;
+        updatedStaff.staffStatus = status.ACTIVE;
+        updatedStaff.statusDate = new Date();
+        emailSevice.sendEmail({
+            title: 'Hired Staff notification', 
+            to: updatedStaff.email, 
+            content: `Hi ${updatedStaff.name} you have been hired! and we are happy to introduce you to the team.`
+        });
+    } else if (newStatus === status.DECLINED) {
+        updatedStaff.hiringStatus = status.DECLINED;
+        updatedStaff.recruitingStatus = status.COMPLETED;
+        updatedStaff.staffStatus = status.NULL;
+        updatedStaff.statusDate = new Date();
+        emailSevice.sendEmail({
+            title: 'Declined Staff notification', 
+            to: updatedStaff.email, 
+            content: `Hi ${updatedStaff.name} thank you for applying to the position, unfortunetly we will not continue with your process, but you can still apply later.`
+        }); 
     }
 
     return updatedStaff;

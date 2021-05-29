@@ -15,6 +15,7 @@ router.put('/users/modify/:id', authorize([Role.Superuser]), usersController.upd
 router.get('/staff', authorize(), staffController.getStaff);
 router.post('/staff', authorize(), staffController.createStaff);
 router.put('/staff/:id', authorize([Role.Superuser, Role.Admin]), staffController.updateStaff);
+router.patch('/staff/:id', authorize([Role.Superuser, Role.Admin]), staffController.updateStaffStatus);
 router.delete('/staff/:id', authorize([Role.Superuser, Role.Admin]), staffController.deleteStaff);
 
 router.get('/technologies', authorize([Role.Superuser, Role.Admin]), technologiesController.getTechnologies);
