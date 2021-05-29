@@ -54,6 +54,8 @@ async function changeStaffStatus(id, newStatus) {
         await hireStaff(updatedStaff);
     } else if (newStatus === status.DECLINED) {
         await declineStaff(updatedStaff);
+    } else if (newStatus === status.ONHOLD) {
+        await onHoldStaff();
     }
 
     return updatedStaff;
@@ -65,7 +67,7 @@ async function hireStaff(staff) {
     staff.staffStatus = status.ACTIVE;
     staff.statusDate = new Date();
     emailSevice.sendEmail({
-        title: 'Hired Staff notification', 
+        title: 'You were hired', 
         to: staff.email, 
         content: `Hi ${staff.name} you have been hired! and we are happy to introduce you to the team.`
     });
@@ -77,8 +79,20 @@ async function declineStaff(staff) {
     staff.staffStatus = status.NULL;
     staff.statusDate = new Date();
     emailSevice.sendEmail({
-        title: 'Declined Staff notification', 
+        title: 'Thanks for applying', 
         to: staff.email, 
         content: `Hi ${staff.name} thank you for applying to the position, unfortunetly we will not continue with your process, but you can still apply later.`
-    }); 
+    });
+}
+
+async function onHoldStaff(staff) {
+    staff.hiringStatus = status.ONHOLD;
+    staff.recruitingStatus = status.COMPLETED;
+    staff.staffStatus = status.NULL;
+    staff.statusDate = new Date();
+    emailSevice.sendEmail({
+        title: 'Thanks for applying', 
+        to: staff.email, 
+        content: `Hi ${staff.name} thank you for applying to the position, we are considering your application for future vacancies.`
+    });
 }

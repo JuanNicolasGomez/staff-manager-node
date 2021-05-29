@@ -3,5 +3,15 @@
         "id": 1,
         "name": "NodeJs",
         "description": "Javascript Framework"
+    },
+    {
+        "id": 2,
+        "name": "Java",
+        "description": "Programming Language"
+    },
+    {
+        "id": 3,
+        "name": "AWS",
+        "description": "Cloud computing platform"
     }
 ]

@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "technology": "NodeJs",
+        "experience": 12
+    },
+    {
+        "id": 2,
+        "technology": "Java",
+        "experience": 36
+    },
+    {
+        "id": 3,
+        "technology": "AWS",
+        "experience": 12
+    }
+]

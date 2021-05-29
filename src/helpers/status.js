@@ -4,5 +4,6 @@ module.exports = {
     DECLINED: 'Declined',
     COMPLETED: 'Completed',
     ACTIVE: 'Active',
-    NULL: null
+    NULL: null,
+    ONHOLD: "On hold"
 }
