@@ -55,7 +55,7 @@ async function changeStaffStatus(id, newStatus) {
     } else if (newStatus === status.DECLINED) {
         await declineStaff(updatedStaff);
     } else if (newStatus === status.ONHOLD) {
-        await onHoldStaff();
+        await onHoldStaff(updatedStaff);
     }
 
     return updatedStaff;
