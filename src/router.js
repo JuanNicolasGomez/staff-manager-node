@@ -8,17 +8,17 @@ const Role = require('./helpers/role');
 const router = new Router();
 
 router.post('/users/authenticate', usersController.authenticate);
-router.get('/users/', authorize(Role.Admin), usersController.getAll);
-router.get('/users/:id', authorize(), usersController.getById);
+router.get('/users/', authorize([Role.Superuser]), usersController.getAll);
+router.get('/users/:id', authorize([Role.Superuser]), usersController.getById);
 
-router.get('/staff', staffController.getStaff);
-router.post('/staff', staffController.createStaff);
-router.put('/staff/:id', staffController.updateStaff);
-router.delete('/staff/:id', staffController.deleteStaff);
+router.get('/staff', authorize([Role.Superuser, Role.Admin, Role.Recruiter]), staffController.getStaff);
+router.post('/staff', authorize([Role.Superuser, Role.Admin, Role.Recruiter]), staffController.createStaff);
+router.put('/staff/:id', authorize([Role.Superuser, Role.Admin]), staffController.updateStaff);
+router.delete('/staff/:id', authorize([Role.Superuser, Role.Admin]), staffController.deleteStaff);
 
-router.get('/technologies', technologiesController.getTechnologies);
-router.post('/technologies', technologiesController.createTechnologies);
-router.put('/technologies/:id', technologiesController.updateTechnologies);
-router.delete('/technologies/:id', technologiesController.deleteTechnologies);
+router.get('/technologies', authorize([Role.Superuser, Role.Admin]), technologiesController.getTechnologies);
+router.post('/technologies', authorize([Role.Superuser, Role.Admin]), technologiesController.createTechnologies);
+router.put('/technologies/:id', authorize([Role.Superuser, Role.Admin]), technologiesController.updateTechnologies);
+router.delete('/technologies/:id', authorize([Role.Superuser, Role.Admin]), technologiesController.deleteTechnologies);
 
 module.exports = router;
