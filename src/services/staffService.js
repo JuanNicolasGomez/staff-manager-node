@@ -51,26 +51,34 @@ async function updateStaffById(id, newStaff) {
 async function changeStaffStatus(id, newStatus) {
     const updatedStaff = staff.find(s => s.id === parseInt(id));
     if (newStatus === status.HIRED){
-        updatedStaff.hiringStatus = status.HIRED;
-        updatedStaff.recruitingStatus = status.COMPLETED;
-        updatedStaff.staffStatus = status.ACTIVE;
-        updatedStaff.statusDate = new Date();
-        emailSevice.sendEmail({
-            title: 'Hired Staff notification', 
-            to: updatedStaff.email, 
-            content: `Hi ${updatedStaff.name} you have been hired! and we are happy to introduce you to the team.`
-        });
+        await hireStaff(updatedStaff);
     } else if (newStatus === status.DECLINED) {
-        updatedStaff.hiringStatus = status.DECLINED;
-        updatedStaff.recruitingStatus = status.COMPLETED;
-        updatedStaff.staffStatus = status.NULL;
-        updatedStaff.statusDate = new Date();
-        emailSevice.sendEmail({
-            title: 'Declined Staff notification', 
-            to: updatedStaff.email, 
-            content: `Hi ${updatedStaff.name} thank you for applying to the position, unfortunetly we will not continue with your process, but you can still apply later.`
-        }); 
+        await declineStaff(updatedStaff);
     }
 
     return updatedStaff;
+}
+
+async function hireStaff(staff) {
+    staff.hiringStatus = status.HIRED;
+    staff.recruitingStatus = status.COMPLETED;
+    staff.staffStatus = status.ACTIVE;
+    staff.statusDate = new Date();
+    emailSevice.sendEmail({
+        title: 'Hired Staff notification', 
+        to: staff.email, 
+        content: `Hi ${staff.name} you have been hired! and we are happy to introduce you to the team.`
+    });
+}
+
+async function declineStaff(staff) {
+    staff.hiringStatus = status.DECLINED;
+    staff.recruitingStatus = status.COMPLETED;
+    staff.staffStatus = status.NULL;
+    staff.statusDate = new Date();
+    emailSevice.sendEmail({
+        title: 'Declined Staff notification', 
+        to: staff.email, 
+        content: `Hi ${staff.name} thank you for applying to the position, unfortunetly we will not continue with your process, but you can still apply later.`
+    }); 
 }
