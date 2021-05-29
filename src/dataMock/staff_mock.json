@@ -8,6 +8,8 @@
             "name":"nodejs",
             "experience": 12
         }],
-        "status": "Pending"
+        "staffStatus": null,
+        "recruitingStatus": null,
+        "hiringStatus": null
     }
 ]

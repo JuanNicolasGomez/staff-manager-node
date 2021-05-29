@@ -1,5 +1,6 @@
-const staff = require('../mock/staff_mock.json');
+const staff = require('../dataMock/staff_mock.json');
 const status = require('../helpers/status.js');
+const emailSevice = require('./emailServiceMock');
 
 module.exports = {
     createStaff,
@@ -13,8 +14,13 @@ async function getAll() {
 }
 
 async function createStaff(newStaff) {
-    newStaff.status = status.PENDING;
+    newStaff.recruitingStatus = status.PENDING;
     staff.push(newStaff);
+    emailSevice.sendEmail({
+        title: 'New Staff notification', 
+        to: 'admin@mail.com', 
+        content: `A new staff: ${newStaff.name} has been created please check the platform.`
+    });
     return staff;
 }
 
