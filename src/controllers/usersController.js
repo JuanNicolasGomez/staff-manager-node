@@ -19,13 +19,27 @@ class usersController {
         const currentUser = req.user;
         const id = parseInt(req.params.id);
 
-        if (id !== currentUser.sub && currentUser.role !== Role.Admin) {
+        if (id !== currentUser.sub) {
             return res.status(401).json({ message: 'Unauthorized' });
         }
 
         userService.getById(req.params.id)
             .then(user => user ? res.json(user) : res.sendStatus(404))
             .catch(err => next(err));
+    }
+
+    getByRole(req, res, next) {
+
+    }
+
+    updateUser(req, res, next) {
+        const id = parseInt(req.params.id);
+        const newUser = req.body;
+
+        userService.updateUserById(id, newUser)
+            .then(user => user ? res.json(user) : res.sendStatus(404))
+            .catch(err => next(err));
+            
     }
 }
 

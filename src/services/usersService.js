@@ -1,11 +1,13 @@
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
-const users = require('../mock/users_mock')
+let users = require('../mock/users_mock');
+const role = require('../helpers/role');
 
 module.exports = {
     authenticate,
     getAll,
-    getById
+    getById,
+    updateUserById
 };
 
 async function authenticate({ username, password }) {
@@ -31,5 +33,18 @@ async function getById(id) {
     const user = users.find(u => u.id === parseInt(id));
     if (!user) return;
     const { password, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+}
+
+async function updateUserById(id, newUser) {
+    users = users.map(user => {
+        if (user.id === parseInt(id) && user.role !== role.Superuser){
+            return newUser;
+        } else {
+            return user;
+        }
+    });
+    if (!users) return;
+    const { password, ...userWithoutPassword } = users;
     return userWithoutPassword;
 }

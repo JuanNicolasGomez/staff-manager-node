@@ -10,6 +10,7 @@ const router = new Router();
 router.post('/users/authenticate', usersController.authenticate);
 router.get('/users/', authorize([Role.Superuser]), usersController.getAll);
 router.get('/users/:id', authorize([Role.Superuser]), usersController.getById);
+router.put('/users/modify/:id', authorize([Role.Superuser]), usersController.updateUser);
 
 router.get('/staff', authorize([Role.Superuser, Role.Admin, Role.Recruiter]), staffController.getStaff);
 router.post('/staff', authorize([Role.Superuser, Role.Admin, Role.Recruiter]), staffController.createStaff);
