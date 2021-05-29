@@ -1,6 +1,6 @@
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
-let users = require('../mock/users_mock');
+let users = require('../dataMock/users_mock');
 const role = require('../helpers/role');
 
 module.exports = {

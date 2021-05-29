@@ -1,5 +1,5 @@
 
-const technologies = require('../mock/technologies_mock.json');
+const technologies = require('../dataMock/technologies_mock.json');
 
 
 class technologiesController {
