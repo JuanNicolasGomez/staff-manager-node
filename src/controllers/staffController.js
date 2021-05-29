@@ -1,47 +1,31 @@
-
-const staff = require('../mock/staff_mock.json');
-
+const staffService = require('../services/staffService');
 
 class staffController {
-    getStaff(req,res) {
-        res.json(staff);
+    getStaff(req,res, next) {
+        staffService.getAll()
+            .then(staff => res.json(staff))
+            .catch(err => next(err));
     }
 
-    createStaff(req,res) {
-        staff.push(req.body);
-        res.json({
-            "status": "ok"
-        });
+    createStaff(req,res, next) {
+        staffService.createStaff(req.body)
+            .then(staff => res.json(staff))
+            .catch(err => next(err));
     }
 
-    deleteStaff(req,res) {
+    deleteStaff(req,res, next) {
         const {id} = req.params;
-        let status = `no item found with id ${id}`;
-        for (let i = 0; i < staff.length; i++) {
-            if (staff[i].id == id){
-                staff.splice(i,1);
-                status = "ok";
-            }
-        }
-        res.json({
-            status
-        });
+        staffService.deleteStaff(id)
+            .then(staff => staff ? res.json(staff) : res.sendStatus(404))
+            .catch(err => next(err));
     }
 
-    updateStaff(req,res) {
+    updateStaff(req,res, next) {
         const {id} = req.params;
-        const item = req.body;
-        let status = `no item found with id ${id}`;
-        for (let i = 0; i < staff.length; i++) {
-            if (staff[i].id == id){
-                console.log(item)
-                staff[i] = item;
-                status = "ok";
-            }
-        }
-        res.json({
-            status
-        });
+        const newStaff = req.body;
+        staffService.updateStaffById(id, newStaff)
+            .then(staff => staff ? res.json(staff) : res.sendStatus(404))
+            .catch(err => next(err));
     }
     
 }
