@@ -16,7 +16,7 @@ Se utilizó JWT para autenticación de usuarios y roles
 ## Autorización
 Todos los endpoints excepto el de **/api/users/authenticate** requere header de autorizacón:
 
-**Authorization**  **Bearer** **{{token jwt que devuelve el ednpoint de authenticate}}**
+**Authorization: **  **Bearer {{** token jwt que devuelve el ednpoint de authenticate **}}**
 
 
 ## Endpoints
