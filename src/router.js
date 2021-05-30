@@ -20,9 +20,9 @@ router.patch('/staff/:id', authorize([Role.Superuser, Role.Admin]), staffControl
 router.delete('/staff/:id', authorize([Role.Superuser, Role.Admin]), staffController.deleteStaff);
 
 router.get('/technologies', authorize([Role.Superuser, Role.Admin]), technologiesController.getTechnologies);
-router.post('/technologies', authorize([Role.Superuser, Role.Admin]), technologiesController.createTechnologies);
-router.put('/technologies/:id', authorize([Role.Superuser, Role.Admin]), technologiesController.updateTechnologies);
-router.delete('/technologies/:id', authorize([Role.Superuser, Role.Admin]), technologiesController.deleteTechnologies);
+router.post('/technologies', authorize([Role.Superuser, Role.Admin]), technologiesController.createTechnology);
+router.put('/technologies/:id', authorize([Role.Superuser, Role.Admin]), technologiesController.updateTechnology);
+router.delete('/technologies/:id', authorize([Role.Superuser, Role.Admin]), technologiesController.deleteTechnology);
 
 router.get('/vacancies', authorize([Role.Superuser, Role.Admin]), vacanciesController.getVacancies);
 router.post('/vacancies', authorize([Role.Superuser, Role.Admin]), vacanciesController.createVacancy);

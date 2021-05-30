@@ -1,47 +1,33 @@
 
 const technologies = require('../dataMock/technologies_mock.json');
-
+const technologyService = require('../services/technologyService');
 
 class technologiesController {
-    getTechnologies(req,res) {
-        res.json(technologies);
+    getTechnologies(req,res, next) {
+        technologyService.getAll()
+            .then(technology => res.json(technology))
+            .catch(err => next(err));
     }
 
-    createTechnologies(req,res) {
-        technologies.push(req.body);
-        res.json({
-            "status": "ok"
-        });
+    createTechnology(req,res, next) {
+        technologyService.createTechnology(req.body)
+            .then(technology => res.json(technology))
+            .catch(err => next(err));
     }
 
-    deleteTechnologies(req,res) {
+    deleteTechnology(req,res, next) {
         const {id} = req.params;
-        let status = `no item found with id ${id}`;
-        for (let i = 0; i < technologies.length; i++) {
-            if (technologies[i].id == id){
-                technologies.splice(i,1);
-                status = "ok";
-            }
-        }
-        res.json({
-            status
-        });
+        technologyService.deleteTechnology(id)
+            .then(technology => technology ? res.json(technology) : res.sendStatus(404))
+            .catch(err => next(err));
     }
 
-    updateTechnologies(req,res) {
+    updateTechnology(req,res, next) {
         const {id} = req.params;
-        const item = req.body;
-        let status = `no item found with id ${id}`;
-        for (let i = 0; i < technologies.length; i++) {
-            if (technologies[i].id == id){
-                console.log(item)
-                technologies[i] = item;
-                status = "ok";
-            }
-        }
-        res.json({
-            status
-        });
+        const newTechnology = req.body;
+        technologyService.updateTechnologyById(id, newTechnology)
+            .then(technology => technology ? res.json(technology) : res.sendStatus(404))
+            .catch(err => next(err));
     }
     
 }
