@@ -1,4 +1,4 @@
-const technologies = require('../dataMock/vacancies_mock.json');
+const technologies = require('../dataMock/technologies_mock.json');
 
 module.exports = {
     createTechnology,
