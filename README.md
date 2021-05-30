@@ -14,9 +14,9 @@
 Se utilizó JWT para autenticación de usuarios y roles
 
 ## Autorización
-Todos los endpoints excepto el de **/api/users/authenticate** requere header de autorizacón:
+Todos los endpoints excepto el de **/api/users/authenticate** requeren el siguiente header de autorizacón:
 
-**Authorization:**  Bearer **{{** token jwt que devuelve el ednpoint de authenticate **}}**
+**Authorization:**  Bearer **{{** token jwt que devuelve el endpoint de authenticate **}}**
 
 
 ## Endpoints
@@ -154,11 +154,34 @@ Body:
 }`
 
 
-# Arquitectura
+# Architecture and folder structure
 
-Se usa un servicio de cache con Redis para mejorar el performance, guardando como llave valor el id del item y el precio.
+**helpers**
+- authorize.js
+- errorHandler.js
+- role.js
+- status.js
 
-![alt text](https://github.com/JuanNicolasGomez/coupons-challenge/blob/master/architecture_diagram.jpg)
+**Services**
+- emailServiceMock
+- staffService
+- technologyService
+- usersSevice
+- vacanciesService
+
+**controllers**
+- staffController
+- technologiesController
+- usersController
+- vacanciesController
+
+**dataMock**
+- staff_mock
+- technologies_mock
+- users_mock
+- vacancies_mock
+
+![alt text](https://github.com/JuanNicolasGomez/staff-manager-node/blob/main/architecture.jpg)
 
 
 
