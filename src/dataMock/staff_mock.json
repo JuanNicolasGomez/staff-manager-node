@@ -5,11 +5,52 @@
         "email": "juan@mail.com",
         "socialSecurityNumbre": 123456,
         "technologies":[{
-            "name":"nodejs",
+            "name":"NodeJs",
+            "experience": 12
+        }],
+        "staffStatus": null,
+        "recruitingStatus": "Completed",
+        "hiringStatus": "On hold",
+        "statusDate": "2021-01-15T23:49:40.637Z"
+    },
+    {
+        "id": 2,
+        "name": "pedro",
+        "email": "juan@mail.com",
+        "socialSecurityNumbre": 123457,
+        "technologies":[{
+            "name":"NodeJs",
             "experience": 12
         }],
         "staffStatus": null,
         "recruitingStatus": null,
         "hiringStatus": null
+    },
+    {
+        "id": 3,
+        "name": "roberto",
+        "email": "roberto@mail.com",
+        "socialSecurityNumbre": 123458,
+        "technologies":[{
+            "name":"Java",
+            "experience": 24
+        }],
+        "staffStatus": null,
+        "recruitingStatus": null,
+        "hiringStatus": null
+    },
+    {
+        "id": 4,
+        "name": "lucas",
+        "email": "lucas@mail.com",
+        "socialSecurityNumbre": 123459,
+        "technologies":[{
+            "name":"Java",
+            "experience": 26
+        }],
+        "staffStatus": null,
+        "recruitingStatus": null,
+        "hiringStatus": null,
+        "campaigns" : []
     }
 ]
