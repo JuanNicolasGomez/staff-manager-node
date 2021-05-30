@@ -18,18 +18,9 @@ class usersController {
     getById(req, res, next) {
         const currentUser = req.user;
         const id = parseInt(req.params.id);
-
-        if (id !== currentUser.sub) {
-            return res.status(401).json({ message: 'Unauthorized' });
-        }
-
         userService.getById(req.params.id)
             .then(user => user ? res.json(user) : res.sendStatus(404))
             .catch(err => next(err));
-    }
-
-    getByRole(req, res, next) {
-
     }
 
     updateUser(req, res, next) {
