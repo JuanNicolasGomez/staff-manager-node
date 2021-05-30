@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "fdd46746-fd8a-4a6a-acc7-1b159950ddc6",
+		"name": "STAFF TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authorization",
+			"item": [
+				{
+					"name": "authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"superuser\",\r\n    \"password\": \"superpassword\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/authenticate",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMzU0NzQsImV4cCI6MTYyMjMzOTA3NH0.pbiYR9cnXJ4G3wdUTsTVzaInMARYuZjO5CsVgFC4-9Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMzYxNjQsImV4cCI6MTYyMjMzOTc2NH0.obt3FrQLygj7d9tirWKultw3NdikDGOZOsvwkMyx8J4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMzYwNDUsImV4cCI6MTYyMjMzOTY0NX0.xuV4m8IquLcyd0FpwaQNKTGc_Ruo48yLZa54F4TG7SM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"username\": \"supedgfsfdsruser2\",\r\n    \"name\": \"Supesdgdfrman\",\r\n    \"role\": \"Recruiter\",\r\n    \"email\": \"superman@super.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/modify/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"modify",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "staff",
+			"item": [
+				{
+					"name": "get satff",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJBZG1pbiIsImlhdCI6MTYyMjMzMzkxNiwiZXhwIjoxNjIyMzM3NTE2fQ.Q1Nnyml5glEiPToN0zDmh1KqNUGCH1_hrzKaYSZq38c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/staff",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"staff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post staff",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMTc3MTQsImV4cCI6MTYyMjMyMTMxNH0.HYU9BGLY4MIaBJUg95tyl9QVGnzKYhnQz3zJMxB0VX0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"name\": \"jua2\",\r\n    \"email\": \"juan2@mail.com\",\r\n    \"socialSecurityNumbre\": 123456,\r\n    \"technologies\": [\r\n        {\r\n            \"name\": \"nodejs\",\r\n            \"experience\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/staff",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"staff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete staff",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMTc3MTQsImV4cCI6MTYyMjMyMTMxNH0.HYU9BGLY4MIaBJUg95tyl9QVGnzKYhnQz3zJMxB0VX0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/staff/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"staff",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put staff",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMTc3MTQsImV4cCI6MTYyMjMyMTMxNH0.HYU9BGLY4MIaBJUg95tyl9QVGnzKYhnQz3zJMxB0VX0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"jua2\",\r\n    \"email\": \"juan2@mail.com\",\r\n    \"socialSecurityNumbre\": 123456,\r\n    \"technologies\": [\r\n        {\r\n            \"name\": \"nodejs\",\r\n            \"experience\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/staff/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"staff",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update staff status",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMzU0NzQsImV4cCI6MTYyMjMzOTA3NH0.pbiYR9cnXJ4G3wdUTsTVzaInMARYuZjO5CsVgFC4-9Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"On hold\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/staff/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"staff",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "technologies",
+			"item": [
+				{
+					"name": "get technologies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMzYxNjQsImV4cCI6MTYyMjMzOTc2NH0.obt3FrQLygj7d9tirWKultw3NdikDGOZOsvwkMyx8J4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/technologies",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"technologies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post technologies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMzYxNjQsImV4cCI6MTYyMjMzOTc2NH0.obt3FrQLygj7d9tirWKultw3NdikDGOZOsvwkMyx8J4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Java\",\r\n    \"description\": \"Java programming language\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/technologies",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"technologies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete technologies",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMzYxNjQsImV4cCI6MTYyMjMzOTc2NH0.obt3FrQLygj7d9tirWKultw3NdikDGOZOsvwkMyx8J4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/technologies/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"technologies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put technologies",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbGUiOiJTdXBlcnVzZXIiLCJpYXQiOjE2MjIzMzYxNjQsImV4cCI6MTYyMjMzOTc2NH0.obt3FrQLygj7d9tirWKultw3NdikDGOZOsvwkMyx8J4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"name\": \"SQL\",\r\n    \"description\": \"SQL techonlogy for database\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/technologies/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"technologies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vacancies",
+			"item": [
+				{
+					"name": "create vacancies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJBZG1pbiIsImlhdCI6MTYyMjMzMzkxNiwiZXhwIjoxNjIyMzM3NTE2fQ.Q1Nnyml5glEiPToN0zDmh1KqNUGCH1_hrzKaYSZq38c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"technology\": \"NodeJs\",\r\n    \"experience\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/vacancies",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"vacancies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vacancies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJBZG1pbiIsImlhdCI6MTYyMjMzMzkxNiwiZXhwIjoxNjIyMzM3NTE2fQ.Q1Nnyml5glEiPToN0zDmh1KqNUGCH1_hrzKaYSZq38c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/vacancies",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"vacancies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete vacancies",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJBZG1pbiIsImlhdCI6MTYyMjMzMzkxNiwiZXhwIjoxNjIyMzM3NTE2fQ.Q1Nnyml5glEiPToN0zDmh1KqNUGCH1_hrzKaYSZq38c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/vacancies/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"vacancies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update vacancies",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJBZG1pbiIsImlhdCI6MTYyMjMzMzkxNiwiZXhwIjoxNjIyMzM3NTE2fQ.Q1Nnyml5glEiPToN0zDmh1KqNUGCH1_hrzKaYSZq38c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"technology\": \"Javascript\",\r\n    \"experience\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/vacancies/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"vacancies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
