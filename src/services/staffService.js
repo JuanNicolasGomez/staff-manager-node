@@ -7,7 +7,8 @@ module.exports = {
     deleteStaff,
     updateStaffById,
     getAll,
-    changeStaffStatus
+    changeStaffStatus,
+    createVacancyCampaignsForStaff
 };
 
 async function getAll() {
@@ -61,6 +62,34 @@ async function changeStaffStatus(id, newStatus) {
     return updatedStaff;
 }
 
+async function createVacancyCampaignsForStaff(vacancy) {
+    return staff.map(candidate => {
+        if (candidate.hiringStatus === status.ONHOLD
+        && matchStaffWithVacancy(candidate, vacancy)
+        && monthDiff(new Date(candidate.statusDate), new Date()) >= 4
+        )
+         {
+            if (candidate.campaigns){
+                candidate.campaigns.push({vacancy});
+            } else {
+                candidate.campaigns = [{vacancy}];
+            }
+            
+            return candidate;
+        }
+    });
+}
+
+function matchStaffWithVacancy(candidate, vacancy) {
+    const technologies = candidate.technologies;
+    for (let i = 0; i < technologies.length; i++) {
+        if ((technologies[i].name === vacancy.technology) && (technologies[i].experience >= vacancy.experience)) {
+            return true;
+        };
+    }
+    return false;
+}
+
 async function hireStaff(staff) {
     staff.hiringStatus = status.HIRED;
     staff.recruitingStatus = status.COMPLETED;
@@ -95,4 +124,9 @@ async function onHoldStaff(staff) {
         to: staff.email, 
         content: `Hi ${staff.name} thank you for applying to the position, we are considering your application for future vacancies.`
     });
+}
+
+function monthDiff(dateFrom, dateTo) {
+    return dateTo.getMonth() - dateFrom.getMonth() + 
+      (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
 }
