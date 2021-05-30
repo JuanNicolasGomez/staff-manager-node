@@ -9,9 +9,18 @@
   `npm run dev`
   
  El servicio queda corriendo en el puerto 3000
- 
+
+## Autenticación
+Se utilizó JWT para autenticación de usuarios y roles
+
+## Autorización
+Todos los endpoints excepto el de **/api/users/authenticate** requere header de autorizacón:
+
+**Authorization**  **Bearer** **{{token jwt que devuelve el ednpoint de authenticate}}**
+
+
 ## Endpoints
-### users CRUD
+### USERS CRUD
 **POST /api/users/authenticate**
 Devuelve información del usuario junto con token de autenticaión
 
@@ -21,6 +30,17 @@ Body:
     "username": "admin",
     "password": "admin"
 }`
+
+Response:
+`{
+    "id": 1,
+    "username": "admin",
+    "name": "Admin",
+    "role": "Admin",
+    "email": "admin@mail.com",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJBZG1pbiIsImlhdCI6MTYyMjMzNzkwMSwiZXhwIjoxNjIyMzQxNTAxfQ.x16onuKec_83uuKw72uJBve4WW-1cH8W1WW3TQBA8Bc"
+}
+`
 
 **GET /api/users/**
 Devuelve información de usuarios
@@ -41,10 +61,9 @@ Body:
     "email": "juancho@mail.com"
 }`
 
-### staff CRUD
+### STAFF CRUD
 
 **POST /api/staff**
-Devuelve información del usuario junto con token de autenticaión
 
 Body:
 
@@ -62,13 +81,10 @@ Body:
 }`
 
 **GET /api/staff**
-Devuelve información de usuarios
 
 **DELETE /api/staff/:id**
-Elimina información de usuario por id
 
 **PUT /api/staff/:id**
-Actualiza informacion de usuario
 
 Body:
 
@@ -85,7 +101,57 @@ Body:
     ]
 }`
 
-### technologies CRUD
+### TECHNOLOGIES CRUD
+
+**POST /api/technologies**
+
+Body:
+
+`{
+    "id": 2,
+    "name": "Java",
+    "description": "Java programming language"
+}`
+
+**GET /api/technologies**
+
+**DELETE /api/technologies/:id**
+
+**PUT /api/technologies/:id**
+
+Body:
+
+`{
+    "id": 3,
+    "name": "SQL",
+    "description": "SQL techonlogy for database"
+}`
+
+### VACANCIES CRUD
+
+**POST /api/vacancies**
+
+Body:
+
+`{
+    "id": 6,
+    "technology": "NodeJs",
+    "experience": 9
+}`
+
+**GET /api/vacancies**
+
+**DELETE /api/vacancies/:id**
+
+**PUT /api/vacancies/:id**
+
+Body:
+
+`{
+    "id": 3,
+    "technology": "Javascript",
+    "experience": 9
+}`
 
 
 # Arquitectura
